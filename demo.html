@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>复选框相关操作</title>
+</head>
+
+<body>
+  <div class="box">
+    <div>
+      <input id="chk1" type="checkbox" name="chk" value="1">
+      <label for="chk1">选项一</label>
+    </div>
+    <div>
+      <input id="chk2" type="checkbox" name="chk" value="2">
+      <label for="chk2">选项二</label>
+    </div>
+    <div>
+      <input id="chk3" type="checkbox" name="chk" value="3">
+      <label for="chk3">选项三</label>
+    </div>
+    <div>
+      <input id="chk4" type="checkbox" name="chk" value="4">
+      <label for="chk4">选项四</label>
+    </div>
+    <div>
+      <input id="chk5" type="checkbox" name="chk" value="5">
+      <label for="chk5">选项五</label>
+    </div>
+
+    <button onclick="selectAll()">全选</button>
+    <button onclick="selectNone()">全不选</button>
+    <button onclick="selectInvert()">反选</button>
+    <button onclick="selectOne()">必须选择一个</button>
+  </div>
+  <script>
+    //全选  
+    function selectAll() {
+      var names = document.getElementsByName("chk");
+      for (var i = 0; i < names.length; i++) {
+        names[i].checked = true;
+      }
+    }
+
+    //全不选  
+    function selectNone() {
+      var names = document.getElementsByName("chk");
+      for (var i = 0; i < names.length; i++) {
+        names[i].checked = false;
+      }
+    }
+
+    //反选  
+    function selectInvert() {
+      var names = document.getElementsByName("chk");
+      for (var i = 0; i < names.length; i++) {
+        if (names[i].checked) {
+          names[i].checked = false;
+        } else {
+          names[i].checked = true;
+        }
+      }
+    }
+
+    //必须选择一个  
+    function selectOne() {
+      var names = document.getElementsByName("chk");
+      var flag = false;//标记判断是否选中一个                 
+      for (var i = 0; i < names.length; i++) {
+        if (names[i].checked) {
+          flag = true;
+          break;
+        }
+      }
+      if (!flag) {
+        alert("请最少选择一项！");
+        return false;
+      }
+    }
+  </script>
+</body>
+
+</html>
